@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Integer checker</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      .divider {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Integer checker</h1>
+
+    <p>Enter a positive integer value (max.100.000.000) and all integer factors will be returned. You can also check if it is a prime number</p>
+
+    <div class="form">
+      <label for="enterField">Enter a number: </label><input type="text" id="enterField" class="enterField">
+      <input type="submit" value="Submit number" class="numberSubmit">
+    </div>
+
+
+    <div class="resultParas">
+      <p class="numbers"></p>
+      <p class="divider"></p>
+    </div>*
+
+
+    <script>
+        
+      const number = document.querySelector('.number');
+      const numberSubmit = document.querySelector('.numberSubmit');
+      const enterField = document.querySelector('.enterField');
+      const divider = document.querySelector('.divider')
+      let guessCount = 1;
+      let resetButton;
+
+     //leeres Array anlegen
+     let factors = [];
+     let num = 18
+
+      function checkNumber(number){
+          //math.floor macht eine Ganzzahl, dadurch wird nur durch ganze Zahlen geteilt
+
+          for (let i=Math.floor(number/2); i>1; i--) {
+          
+          //Prüfen, ob sich number durch i ganzzahlig teilen lässt
+
+          //Wenn ja, ist i ein Teiler --> in Array merken
+          if(number%i == 0) {
+
+              console.log('Teilbar durch: ' + i)
+              factors.push(i);
+          }
+        }
+            //Der Aufruf von return führt dazu, dass die Funktion sofort verlassen und die Kontrolle an die aufrufende Funktion zurückgegeben wird.
+          return factors;
+    }
+
+    let intFactors = checkNumber (num);
+
+            
+            console.log('Factors: ', intFactors);
+
+       /* function primeNumber (number) {
+        for (var i=2; i < number; i++) {
+        if (number % i === 0);
+        }
+      }
+
+
+      function checkNumber() {
+        let userNumber = Number(enterField.value);
+        if (userNumber < 0) {
+          divider.textContent = 'Number invalid';
+          resetGame();
+        }
+        if (userNumber > 1000000000) {
+          divider.textContent = 'Range exceeded. Enter lower value';
+          resetGame();
+        }
+
+        if  (userNumber === primeNumber) {
+            divider.textContent = 'You entered a prime number!';
+            resetGame();
+        }
+
+        else  () {
+            divider.textContent = 'Number dividers are: ';
+            resetGame();
+        }
+
+       
+        guessCount++;
+        guessField.value = '';
+        guessField.focus();
+      }
+
+
+      numberSubmit.addEventListener('click', checkNumber);
+      
+      function resetGame() {
+        guessCount = 0;
+        const resetParas = document.querySelectorAll('.resultParas p');
+        for(let i = 0 ; i < resetParas.length ; i++) {
+          resetParas[i].textContent = '';
+        }
+        resetButton.parentNode.removeChild(resetButton);
+        enterField.disabled = false;
+        numberSubmit.disabled = false;
+        enterField.value = '';
+        enterField.focus();
+        divider.style.backgroundColor = 'white';
+      }
+
+      */
+    </script>
+  </body>
+</html>
