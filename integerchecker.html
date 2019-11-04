@@ -16,7 +16,7 @@
         margin: 0 auto;
       }
       .divider {
-        color: white;
+        color: black;
         padding: 3px;
       }
     </style>
@@ -29,32 +29,41 @@
 
     <div class="form">
       <label for="enterField">Enter a number: </label><input type="text" id="enterField" class="enterField">
-      <input type="submit" value="Submit number" class="numberSubmit">
+      <input type="submit" value="Eingabe" class="numberSubmit">
     </div>
 
 
     <div class="resultParas">
-      <p class="numbers"></p>
+      <p class="number"></p>
       <p class="divider"></p>
-    </div>*
+    </div>
 
 
     <script>
         
-      const number = document.querySelector('.number');
       const numberSubmit = document.querySelector('.numberSubmit');
       const enterField = document.querySelector('.enterField');
       const divider = document.querySelector('.divider')
       let guessCount = 1;
       let resetButton;
+      
 
-     //leeres Array anlegen
-     let factors = [];
-     let num = 18
+     function checkGuess () {
+        let number = parseInt(enterField.value);
+         console.log ('Huhu!', number);
+
+         let intFactors = checkNumber(number);
+
+         enterField.value = '';
+         enterField.focus ();
+        
+     }
 
       function checkNumber(number){
-          //math.floor macht eine Ganzzahl, dadurch wird nur durch ganze Zahlen geteilt
+        //leeres Array anlegen
+        let factors = [];
 
+          //math.floor macht eine Ganzzahl, dadurch wird nur durch ganze Zahlen geteilt
           for (let i=Math.floor(number/2); i>1; i--) {
           
           //Prüfen, ob sich number durch i ganzzahlig teilen lässt
@@ -68,20 +77,26 @@
         }
             //Der Aufruf von return führt dazu, dass die Funktion sofort verlassen und die Kontrolle an die aufrufende Funktion zurückgegeben wird.
           return factors;
+
+          numberSubmit.addEventListener('click', checkGuess);
+
+        if (factors.length > 0){
+            console.log (factors.length)
+            divider.textContent = 'factors';
+        } 
+
+        else {
+            divider.textContent = 'Prime number';
+        }
+
+       
+
+
     }
 
-    let intFactors = checkNumber (num);
+        
 
-            
-            console.log('Factors: ', intFactors);
-
-       /* function primeNumber (number) {
-        for (var i=2; i < number; i++) {
-        if (number % i === 0);
-        }
-      }
-
-
+       /* 
       function checkNumber() {
         let userNumber = Number(enterField.value);
         if (userNumber < 0) {
@@ -111,7 +126,8 @@
 
 
       numberSubmit.addEventListener('click', checkNumber);
-      
+      */
+
       function resetGame() {
         guessCount = 0;
         const resetParas = document.querySelectorAll('.resultParas p');
@@ -126,7 +142,7 @@
         divider.style.backgroundColor = 'white';
       }
 
-      */
+     
     </script>
   </body>
 </html>
