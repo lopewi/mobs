@@ -40,21 +40,19 @@
 
     <script>
     // Your JavaScript goes here
-
-      "use strict";
-
+    
+      
         console.log ('Hello World!');
 
     // randomNumber = Math.floor(Math.random()*100) +1;
 
-        let randomNumber = Math.random();
-        console.log('rN: ', Math.floor(randomNumber*100) +1);
-
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        console.log(randomNumber);
         const guesses = document.querySelector('.guesses');
         const lastResult = document.querySelector('.lastResult');
         const lowOrHi = document.querySelector('.lowOrHi');
 
-        console.log('Guesses element: ', guesses);
+        
 
         const guessSubmit = document.querySelector('.guessSubmit');
         const guessField = document.querySelector('.guessField');
@@ -64,13 +62,11 @@
 
     // alert macht ein neues Fenster auf, dass ich zuklicken muss
 
-        function checkGuess() {
-            alert('I am a placeholder');
-        }
+        
 
         function checkGuess() {
 
-            // konvertiert jede Eingabe in guessField in eine Zahl    
+        // konvertiert jede Eingabe in guessField in eine Zahl    
                 let userGuess = Number(guessField.value);
                 if (guessCount === 1) {
                     guesses.textContent = 'Previous guesses: ';
@@ -99,7 +95,54 @@
                 guessField.value = '';
                 guessField.focus();
             }
+            // auf dieses Element guessSubmit, wenn Event click ausgeführt wird, dann Funktion checkGuess ausführen
+                var input = document.getElementById("guessSubmit");
 
+                //guessSubmit.addEventListener('click', checkGuess);
+                input.addEventListener("keyup", function(event) {
+                // Number 13 is the "Enter" key on the keyboard
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("guessSubmit").click();
+                }
+                });
+                //guessSubmit.addEventListener('input', checkGuess);
+
+                function setGameOver() {
+                    guessField.disabled = true;
+                    guessSubmit.disabled = true;
+                    resetButton = document.createElement('button');
+                    resetButton.textContent = 'Start new game';
+                    document.body.appendChild(resetButton);
+                    resetButton.addEventListener('click', resetGame);
+                }
+
+                function resetGame() {
+                    guessCount = 1;
+
+                    const resetParas = document.querySelectorAll('.resultParas p');
+                    for (let i = 0 ; i < resetParas.length ; i++) {
+                        resetParas[i].textContent = '';
+                    }
+
+                    resetButton.parentNode.removeChild(resetButton);
+
+                    guessField.disabled = false;
+                    guessSubmit.disabled = false;
+                    guessField.value = '';
+                    guessField.focus();
+
+                    lastResult.style.backgroundColor = 'white';
+
+                    randomNumber = Math.floor(Math.random() * 100) + 1;
+                }
+
+                const resetParas = document.querySelectorAll('.resultParas p');
+                    for (let i = 0 ; i < resetParas.length ; i++) {
+                    resetParas[i].textContent = '';
+                    }    
 
     </script>
   </body>
