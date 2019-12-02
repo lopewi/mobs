@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DOM Manipulation</title>
+    <link rel="stylesheet" href="styles021.css">
+</head>
+
+<body>
+
+    <header>
+        <button class="item">
+            Divtime
+        </button>
+
+        <button class="item" id="button2">
+            Hello2!
+        </button>
+
+        <button class="item" id="button3">
+            Hello3!
+        </button>
+
+        <button class="item" id="button4">
+            Hello1!
+        </button>
+
+        <button class="item" id="button5">
+            Hello2!
+        </button>
+
+        <button class="item" id="button6">
+            Hello3!
+        </button>
+    </header>
+
+    <main>
+
+       <img src="file:///home/itlabuser/mobs/clone_test/mobs_test/Mops.jpg" id="pfeffermobs">
+
+    </main>
+
+    <script>
+                
+        function FillIn() {
+            document.getElementsByTagName("img")[0].remove();
+
+            /* for(x=0; x<6; x++) {
+                var newDiv= document.createElement("div");
+                newDiv.innerHTML="hallo";
+                document.getElementsByTagName("main")[0].appendChild(newDiv);
+            } */
+        
+            //document.getElementsByTagName("main")[0].appendChild(newDiv);
+            
+            var newDiv1=document.createElement("div");
+            newDiv1.innerHTML="hallo1";
+            newDiv1.id="div1";
+            newDiv1.style.backgroundColor="green";
+            document.getElementsByTagName("main")[0].appendChild(newDiv1);
+            
+            var newDiv2=document.createElement("div");
+            newDiv2.innerHTML="hallo2";
+            newDiv1.id="div2";
+            newDiv2.style.backgroundColor="blue";
+            document.getElementsByTagName("main")[0].appendChild(newDiv2);
+
+            var newDiv3=document.createElement("div");
+            newDiv3.innerHTML="hallo3";
+            newDiv1.id="div3";
+            newDiv3.style.backgroundColor="red";
+            document.getElementsByTagName("main")[0].appendChild(newDiv3);
+
+            var newDiv4=document.createElement("div");
+            newDiv4.innerHTML="hallo4";
+            newDiv1.id="div4";
+            newDiv4.style.backgroundColor="green";
+            document.getElementsByTagName("main")[0].appendChild(newDiv4);
+            
+            var newDiv5=document.createElement("div");
+            newDiv5.innerHTML="hallo5";
+            newDiv1.id="div5";
+            newDiv5.style.backgroundColor="blue";
+            document.getElementsByTagName("main")[0].appendChild(newDiv5);
+
+            var newDiv6=document.createElement("div");
+            newDiv6.innerHTML="hallo6";
+            newDiv1.id="div6";
+            newDiv6.style.backgroundColor="red";
+            document.getElementsByTagName("main")[0].appendChild(newDiv6);
+
+        }
+        document.getElementsByTagName("button")[0].addEventListener("click", FillIn);
+
+    </script>
+
+    <footer>
+        Statusinformationen
+    </footer>
+</body>
+
+</html>
