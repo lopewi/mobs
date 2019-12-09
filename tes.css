@@ -1,0 +1,89 @@
+body {
+    padding: 0px;
+    margin: 0px;
+    font-size: 2em;
+    font-family: Impact, Haettenschweiler, Franklin Gothic Bold, Charcoal, Helvetica Inserat, Bitstream Vera Sans Bold, Arial Black, sans serif;
+    display: grid;
+    grid-template-areas: "header header header" "main main main" "footer footer footer";
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 30% auto 10%;
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+div#time{
+    font-size: 3em;
+    text-align: right;
+    padding-right: 50px;
+}
+
+div#date{
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 50px;
+}
+
+#teslalogo{
+    float:left;
+}
+
+.icon{
+    -webkit-filter: invert(100%);
+    float: left;
+}
+
+main {
+    grid-area: main;
+    background: black;
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 30px;
+}
+
+footer {
+    grid-area: footer;
+    background: black;
+    padding: 10px;
+    color: white;
+}
+
+
+div.item {
+    background:rgba(177, 7, 7, 0.87);
+    color: white;
+    font-size: 0.65em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    margin: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgba(51, 2, 2, 0.911);
+    width: 18%;
+    height: 100px;
+    text-align: right;
+    display: inline-block;
+}
+
+div.item1 {
+    background: rgb(102, 101, 101);
+    color: white;
+    font-size: 0.7em;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+    margin: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(52, 54, 54);
+    width: 18%;
+    height: 100px;
+    text-align: right;
+    display: inline-block;
+}
+

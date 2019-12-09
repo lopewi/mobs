@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Tesla Entertainment System</title>
+    <link rel="stylesheet" href="tes.css">
+    <script>
+        //Date.prototype.toDateString() menschenlesbar
+        function timedate () {
+            var date = new Date ();
+            var year = date.getFullYear();
+            var month = date.getMonth();
+            var monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August","September","Oktober","November","Dezember"]
+            var day = date.getDate();
+            if(day<10) {day = "0"+day;}
+            document.getElementById("date").innerHTML= day + "." + monthNames[month] + " " + year;
+            var time = new Date ();
+            var hour = time.getHours();
+            var min = time.getMinutes();
+            var sec = time.getSeconds();
+            if(hour<10) {hour ="0"+ hour;}
+            if(min<10) {min ="0"+ min;}
+            if(sec<10) {sec ="0"+ sec;}
+            document.getElementById("time").innerHTML= hour + ":"+ min + ":" + sec;
+            //document.getElementsByTagName('h1')[0].innerHTML= hour + ":" + min + ":" + sec + "\r" day + "." + monthNames[month] + " " + year;
+            var tdreload = setTimeout(timedate,1000);
+        }
+    </script>
+</head>
+
+<body onload="timedate()">
+
+    <header>
+        <img id="teslalogo" src="teslalogo.jpg" height=200px>
+        <div id="time"></div>
+        <div id="date"></div>
+    </header>
+
+    <main>
+
+        <div class="item">
+            <img class="icon" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
+            Audioplayer
+        </div>
+
+        <div class="item">
+            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/car-service.png">
+            Fahrzeugstatus
+        </div>
+
+        <div class="item">
+            <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
+            Abschließen
+        </div>
+
+        <div class="item">
+            <img class="icon" src="https://img.icons8.com/ios/100/000000/key-security.png">
+            Aufschließen
+        </div>
+
+        <div class="item1">
+            <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster1
+        </div>
+    
+        <div class="item1">
+            <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster2
+        </div>
+    
+        <div class="item1">
+            <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster3
+        </div>
+    
+        <div class="item1">
+            <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster4
+        </div>
+
+        <!--
+        <div class="exercise">
+            Hier kommt Ihre Aufgabe. Benutzen Sie JavaScript (und nur Javascript), um Folgendes zu erreichen:
+
+            <ul>
+                <li>Ändern Sie die Texte.</li>
+                <li>Ändern Sie die Stile der Elemente.</li>
+                <li>Löschen Sie den Inhalt von <code>nav</code> und fügen Sie ein <code>ul</code>-Element mit mehreren
+                    <code>li</code>-Elementen ein. Warum sehen die neuen Elemente so aus?</li>
+                <li>Löschen Sie ein Elemente aus dem <code>main</code>-Element.</li>
+                <li>Geben Sie den Einträgen im <code>nav</code>-Menü eine Funktionalität. Bsp: Beim Klick auf einen
+                    Eintrag wird das <code>main</code>-Element geleert und dort ein Bild geladen.</li>
+            </ul>
+        </div>
+        -->
+    </main>
+    <!-- <script>
+    "use strict";
+    fetch("http://192.168.0.52:5000/status").then(function(response){
+        console.log("Response: ", response);
+
+        response.text().then(function(text) {
+            console.log(text);
+            console.log("huhu");
+            var newDiv = document.createElement("div");
+            newDiv.innerHTML = text;
+            newDiv.style.backgroundColor = "green";
+            document.getElementsByTagName("main")[0].appendChild(newDiv);
+        });
+    });
+
+    </script> -->
+
+    <script>
+    function Clickit(){
+        console.log("huhu");
+        var newPage = window.open("fahrzeugstatus.html", "fahrzeugstatus");
+    }
+        document.getElementsByClassName("item")[1].addEventListener("click", Clickit);
+    </script>
+
+    <footer>
+        Now playing
+    </footer>
+</body>
+
+</html>
