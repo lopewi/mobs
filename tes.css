@@ -77,7 +77,9 @@ div#home {
 }
 
 div.item:hover{
-    cursor: pointer;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 div.item1 {
