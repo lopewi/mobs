@@ -55,7 +55,7 @@ footer {
 }
 
 
-div.item, div.home, div#fahrzeugstatus {
+div.item, div#fahrzeugstatus, div#home {
     background:rgba(177, 7, 7, 0.87);
     color: white;
     font-size: 0.65em;
@@ -69,6 +69,15 @@ div.item, div.home, div#fahrzeugstatus {
     height: 100px;
     text-align: right;
     display: inline-block;
+}
+
+div#home {
+    background:rgba(128, 128, 128, 0.692);
+    border-color: rgba(169, 169, 169, 0.11);
+}
+
+div.item:hover{
+    cursor: pointer;
 }
 
 div.item1 {

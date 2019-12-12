@@ -6,28 +6,10 @@
     <title>Tesla Entertainment System</title>
     <link rel="stylesheet" href="tes.css">
     <script>
-        //Date.prototype.toDateString() menschenlesbar
-        function timedate() {
-            var date = new Date();
-            var year = date.getFullYear();
-            var month = date.getMonth();
-            var monthNames = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
-            var day = date.getDate();
-            if (day < 10) { day = "0" + day; }
-            document.getElementById("date").innerHTML = day + "." + monthNames[month] + " " + year;
-            var time = new Date();
-            var hour = time.getHours();
-            var min = time.getMinutes();
-            var sec = time.getSeconds();
-            if (hour < 10) { hour = "0" + hour; }
-            if (min < 10) { min = "0" + min; }
-            if (sec < 10) { sec = "0" + sec; }
-            document.getElementById("time").innerHTML = hour + ":" + min + ":" + sec;
-            //document.getElementsByTagName('h1')[0].innerHTML= hour + ":" + min + ":" + sec + "\r" day + "." + monthNames[month] + " " + year;
-            var tdreload = setTimeout(timedate, 1000);
-        }
+        
     </script>
 </head>
+<script src="tes.js" async></script>
 
 <body onload="timedate()">
 
@@ -38,153 +20,141 @@
     </header>
 
     <main>
+        <div id="mainstart">
+            <div class="item" id="home" style="display:none">
+                <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+                Home
+            </div>
 
-        <div class="home">
-            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
-            Home
-        </div>
+            <div class="item" id="audio">
+                <img class="icon" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
+                Audioplayer
+            </div>
 
-        <div id="mainpage">
-        <div class="item">
-            <img class="icon" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
-            Audioplayer
-        </div>
+            <div class="item" id="fahrzeugstatus">
+                <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/car-service.png">
+                Fahrzeugstatus
+            </div>
 
-        <div class="item">
-            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/car-service.png">
-            Fahrzeugstatus
-        </div>
+            <div class="item" id="schloss">
+                <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
+                Ab-/Aufschließen
+            </div>
 
-        <div class="item">
-            <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
-            Abschließen
-        </div>
-
-        <div class="item">
-            <img class="icon" src="https://img.icons8.com/ios/100/000000/key-security.png">
-            Aufschließen
-        </div>
-
-        <div class="item1">
-            <img class="icon" style="transform: rotate(-90deg);"
+            <div class="item" id="fenster">
+                <img class="icon" style="transform: rotate(-90deg);"
                 src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster1
+                Fenster
+            </div>
         </div>
 
-        <div class="item1">
-            <img class="icon" style="transform: rotate(-90deg);"
-                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster2
-        </div>
-
-        <div class="item1">
-            <img class="icon" style="transform: rotate(-90deg);"
-                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster3
-        </div>
-
-        <div class="item1">
-            <img class="icon" style="transform: rotate(-90deg);"
-                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster4
-        </div>
-        </div>
-
-        <template class="template">
-
-                <div class="info">
-                    Geschwindigkeit:
-                </div>
-
-                <div class="info">
-                    Verbrauch:
-                </div>
-
-                <div class="info">
-                    Luftdruck:
-                </div>
-
-                <div class="info">
-                    Temperatur:
-                </div>
-
-                <div class="info">
-                    Feuchtigkeit:
-                </div>
-
-        </template>
-
-        <!--
-        <div class="exercise">
-            Hier kommt Ihre Aufgabe. Benutzen Sie JavaScript (und nur Javascript), um Folgendes zu erreichen:
-
-            <ul>
-                <li>Ändern Sie die Texte.</li>
-                <li>Ändern Sie die Stile der Elemente.</li>
-                <li>Löschen Sie den Inhalt von <code>nav</code> und fügen Sie ein <code>ul</code>-Element mit mehreren
-                    <code>li</code>-Elementen ein. Warum sehen die neuen Elemente so aus?</li>
-                <li>Löschen Sie ein Elemente aus dem <code>main</code>-Element.</li>
-                <li>Geben Sie den Einträgen im <code>nav</code>-Menü eine Funktionalität. Bsp: Beim Klick auf einen
-                    Eintrag wird das <code>main</code>-Element geleert und dort ein Bild geladen.</li>
-            </ul>
-        </div>
-        -->
     </main>
 
     <script>
-        "use strict";
-
-        function Clickit() {
-            //document.querySelectorAll("main").innerHTML ="";
-            document.getElementById("mainpage").style.display = "none";
-            
-            document.getElementsByTagName("main")[0].appendChild(
-            document.querySelector("template").content.cloneNode(true));
-            
-
-            /* let items = document.getElementsByClassName("item");
-
-            for (let i = 0; i < items.length; i++) {
-
-                console.log("Item " + i, items[i]);
-            } */
-
-            fetch("http://192.168.0.59:5000/status").then(function (response) {
-                console.log("Response: ", response);
-
-                response.text().then(function (text) {
-                    console.log(text);
-                    var array = text.split(",");
-                    var speed = array[3].split(":")
-                    var consumption = array[0].split(":");
-                    var humidity = array[1].substr(15, 6);
-                    var temp = array[4].substr(12, 4);
-                    var pressure = array[2].substr(15, 6);
-                    document.getElementsByClassName("info")[0].append(speed[1] + "kmh");
-                    document.getElementsByClassName("info")[1].append(consumption[1] + "l");
-                    document.getElementsByClassName("info")[2].append(pressure + "Pa");
-                    document.getElementsByClassName("info")[3].append(temp + "°C");
-                    document.getElementsByClassName("info")[4].append(humidity + "g/m³");
-
-                });
-            });
-        };
-        document.getElementsByClassName("item")[1].addEventListener("click", Clickit);
-
-        function HomeClick() {
-            
-            document.getElementById("mainpage").style.display = "initial";
-            
-        }
-        document.getElementsByClassName("home")[0].addEventListener("click", HomeClick);
-
-
-
+        
     </script>
 
     <footer>
         Now playing
     </footer>
+
+    <template id="mainpage">
+
+            <div class="item" id="home">
+                    <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+                    Home
+                </div>
+    
+                <div class="item" id="audio">
+                    <img class="icon" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
+                    Audioplayer
+                </div>
+    
+                <div class="item" id="fahrzeugstatus">
+                    <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/car-service.png">
+                    Fahrzeugstatus
+                </div>
+    
+                <div class="item" id="schloss">
+                    <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
+                    Ab-/Aufschließen
+                </div>
+    
+                <div class="item" id="fenster">
+                    <img class="icon" style="transform: rotate(-90deg);"
+                    src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+                    Fenster
+            </div>
+
+    </template>
+
+    <template id="statustemplate">
+
+        <div class="home" id="home">
+                <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+                Home
+        </div>
+
+        <div class="info">
+            Geschwindigkeit:
+        </div>
+
+        <div class="info">
+            Verbrauch:
+        </div>
+
+        <div class="info">
+            Luftdruck:
+        </div>
+
+        <div class="info">
+            Temperatur:
+        </div>
+
+        <div class="info">
+            Feuchtigkeit:
+        </div>
+
+    </template>
+
+    <template class="template" id="fensterpage">
+        
+        <div class="home" id="home">
+            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+            Home
+        </div>
+        
+        <div class="item">
+            <img class="icon" style="transform: rotate(-90deg);"
+            src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster links
+        </div>
+
+        <div class="item">
+            <img class="icon" style="transform: rotate(-90deg);"
+            src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Fenster rechts
+        </div>
+
+        <div class="item">
+            <img class="icon" style="transform: rotate(-90deg);"
+            src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Alle Fenster
+        </div>
+    </template>
+
+    <template class="template" id="audiopage">
+    <div class="item">
+            Musikliste
+
+            <ul>
+                <li>xx</li>
+                <li>xx</li>
+            </ul>
+        </div>     
+
+    </template>
+
 </body>
 
 </html>
