@@ -9,6 +9,7 @@
         
     </script>
 </head>
+
 <script src="tes.js" async></script>
 
 <body onload="timedate()">
@@ -20,7 +21,6 @@
     </header>
 
     <main>
-        <div id="mainstart">
             <div class="item" id="home" style="display:none">
                 <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
                 Home
@@ -46,16 +46,11 @@
                 src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
                 Fenster
             </div>
-        </div>
 
     </main>
 
-    <script>
-        
-    </script>
-
     <footer>
-        Now playing
+        ♫♫♫ Now playing: ♫♫♫
     </footer>
 
     <template id="mainpage">
@@ -95,23 +90,23 @@
                 Home
         </div>
 
-        <div class="info">
+        <div class="info" id="speed">
             Geschwindigkeit:
         </div>
 
-        <div class="info">
+        <div class="info" id="verbrauch">
             Verbrauch:
         </div>
 
-        <div class="info">
+        <div class="info" id="luftdruck">
             Luftdruck:
         </div>
 
-        <div class="info">
+        <div class="info" id="temp">
             Temperatur:
         </div>
 
-        <div class="info">
+        <div class="info" id="feuchtigkeit">
             Feuchtigkeit:
         </div>
 
@@ -124,19 +119,19 @@
             Home
         </div>
         
-        <div class="item">
+        <div class="item" id="fensterlinks">
             <img class="icon" style="transform: rotate(-90deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Fenster links
         </div>
 
-        <div class="item">
+        <div class="item" id="fensterrechts">
             <img class="icon" style="transform: rotate(-90deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Fenster rechts
         </div>
 
-        <div class="item">
+        <div class="item" id="allefenster">
             <img class="icon" style="transform: rotate(-90deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Alle Fenster
@@ -151,13 +146,17 @@
             Home
         </div>
 
-        <div class="item">
-            Musikliste
-            <ul>
-                <li>xx</li>
-                <li>xx</li>
-            </ul>
-        </div>     
+        <div class="songs">
+            song1
+        </div>
+
+        <div class="songs">
+            song2
+        </div>
+        
+        <div class="songs">
+            song3
+        </div>
 
     </template>
 

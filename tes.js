@@ -36,6 +36,18 @@ function handleMainClick(event) {
         case "fenster":
             FensterClick();
             break;
+        
+        case "schloss":
+            SchlossClick();
+            break;
+        
+        case "lock":
+            LockClick();
+            break;
+        
+        case "unlock":
+            UnlockClick();
+            break;
     }
 }
 document.querySelector('main').addEventListener("click", handleMainClick);
@@ -43,32 +55,23 @@ document.querySelector('main').addEventListener("click", handleMainClick);
 function HomeClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
-    document.getElementsByTagName("main")[0].appendChild(
-        document.getElementById("mainpage").content.cloneNode(true));
+    mainElement.appendChild(document.getElementById("mainpage").content.cloneNode(true));
     document.getElementById("home").style.display="none";
 }
 
 function FensterClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
-    document.getElementsByTagName("main")[0].appendChild(
-        document.getElementById("fensterpage").content.cloneNode(true));
+    mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
 }
 
-function AudioClick() {
-    let mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    document.getElementsByTagName("main")[0].appendChild(
-        document.getElementById("audiopage").content.cloneNode(true));
-}
      
 function StatusClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
-    let statusTemplate = document.getElementById('statustemplate');
-    mainElement.appendChild(statusTemplate.content.cloneNode(true));
+    mainElement.appendChild(document.getElementById("statustemplate").content.cloneNode(true));
 
-    fetch("http://192.168.0.59:5000/status").then(function (response) {
+    fetch("http://192.168.0.52:5000/status").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             console.log(text);
@@ -84,6 +87,70 @@ function StatusClick() {
             document.getElementsByClassName("info")[3].append(temp + "°C");
             document.getElementsByClassName("info")[4].append(humidity + "g/m³");
 
+            });
+        });
+    };
+
+    function SchlossClick() {
+        var newDiv1=document.createElement("div");
+        newDiv1.innerHTML="Abschließen";
+        newDiv1.id="lock";
+        newDiv1.style.textAlign = "center";
+        newDiv1.className="item1";
+        document.getElementsByTagName("main")[0].appendChild(newDiv1);
+        
+        var newDiv2=document.createElement("div");
+        newDiv2.innerHTML="Aufschließen";
+        newDiv2.style.textAlign = "center";
+        newDiv2.id="unlock";
+        newDiv2.className="item1";
+        document.getElementsByTagName("main")[0].appendChild(newDiv2);
+    }
+
+    function LockClick() {
+        fetch("http://192.168.0.52:5000/action/lock").then(function (response) {
+            console.log("Response: ", response);
+            response.text().then(function (text) {
+                let mainElement = document.querySelector('main');
+                mainElement.innerHTML = '';
+                document.getElementsByTagName("main")[0].appendChild(
+                    document.getElementById("mainpage").content.cloneNode(true));
+                document.getElementById("home").style.display="none";
+                let schlossbutton = document.getElementById("schloss");
+                schlossbutton.innerHTML += "Locked";
+            });
+        });
+    };
+
+    function UnlockClick() {
+        fetch("http://192.168.0.52:5000/action/unlock").then(function (response) {
+            console.log("Response: ", response);
+            response.text().then(function (text) {
+                let mainElement = document.querySelector('main');
+                mainElement.innerHTML = '';
+                document.getElementsByTagName("main")[0].appendChild(
+                    document.getElementById("mainpage").content.cloneNode(true));
+                document.getElementById("home").style.display="none";
+                let schlossbutton = document.getElementById("schloss");
+                schlossbutton.innerHTML += "Unlocked";
+            });
+        });
+    };
+
+    function AudioClick() {
+        let mainElement = document.querySelector('main');
+        mainElement.innerHTML = '';
+        mainElement.appendChild(document.getElementById("audiopage").content.cloneNode(true));
+
+        fetch("http://192.168.0.52:5000/music").then(function (response) {
+            console.log("Response: ", response);
+            response.text().then(function (text) {
+                console.log(text);
+            var split1 = text.split("{");
+            console.log(split1);
+            document.getElementsByClassName("songs")[0].innerHTML= split1[1];
+            document.getElementsByClassName("songs")[1].innerHTML= split1[2];
+            document.getElementsByClassName("songs")[2].innerHTML= split1[3];
             });
         });
     };
