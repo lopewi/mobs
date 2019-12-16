@@ -5,14 +5,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Tesla Entertainment System</title>
+    <title> Tesla Entertainment System </title>
     <link rel="stylesheet" href="tes.css">
-    <script>
-        
-    </script>
+    <script src="tes.js" async></script>
 </head>
-
-<script src="tes.js" async></script>
 
 <body onload="timedate()">
 
@@ -150,15 +146,21 @@
         </div>
 
         <audio controls id="audioplayer">
-            <source src="http://www.archive.org/download/bolero_69/Bolero.mp3" type="audio/mp3" preload="auto">
+            <source id="sourceId" src="music/Alaska.mp3" type="audio/mp3" preload="auto">
         </audio>
 
         <div class="scroll">
         <ul id="playlist">
-            <li class="active"><a href="">text</a></li>
+            <li><a id="song1" href="">text</a></li>
+            <li><a href="">text</a></li>
             <li><a href="">text</a></li>
             <li><a href="">text</a></li>
         </ul>
+        </div>
+
+        <div class="item" id="random">
+            <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
+            Random test div
         </div>
 
     </template>

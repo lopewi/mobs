@@ -61,7 +61,7 @@ function handleMainClick(event) {
             CloseClick();
             break;
 
-        case "playlist":
+        case "random":
             SongClick();
             break;
     }
@@ -69,6 +69,7 @@ function handleMainClick(event) {
 document.querySelector('main').addEventListener("click", handleMainClick);
 
 function HomeClick() {
+    clearInterval(StatusClick);
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("mainpage").content.cloneNode(true));
@@ -81,30 +82,32 @@ function FensterClick() {
     mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
 }
 
+var i = 0;
 
 function StatusClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("statustemplate").content.cloneNode(true));
 
-    fetch("http://192.168.0.59:5000/status").then(function (response) {
-        console.log("Response: ", response);
-        response.text().then(function (text) {
-            console.log(text);
-            var array = text.split(",");
-            var speed = array[3].split(":")
-            var consumption = array[0].split(":");
-            var humidity = array[1].substr(15, 6);
-            var temp = array[4].substr(12, 4);
-            var pressure = array[2].substr(15, 6);
-            document.getElementsByClassName("info")[0].append(speed[1] + "kmh");
-            document.getElementsByClassName("info")[1].append(consumption[1] + "l");
-            document.getElementsByClassName("info")[2].append(pressure + "Pa");
-            document.getElementsByClassName("info")[3].append(temp + "°C");
-            document.getElementsByClassName("info")[4].append(humidity + "g/m³");
+    var statusInterval = setInterval(
+        function StatusInfo() {
+            fetch("http://192.168.0.52:5000/status")
+            .then(response => response.json())
+            .then(function (statusInfo){
+                document.getElementsByClassName("info")[0].innerHTML = "Geschwindigkeit: " + statusInfo.speed + "khm";
+                document.getElementsByClassName("info")[1].innerHTML = "Verbrauch: "+ statusInfo.consumption + "l";
+                document.getElementsByClassName("info")[2].innerHTML = "Luftdruck: " + Math.round(statusInfo.pressure) + "Pa";
+                document.getElementsByClassName("info")[3].innerHTML = "Temperatur: " + Math.round(statusInfo.temp) + "°C";
+                document.getElementsByClassName("info")[4].innerHTML = "Feuchtigkeit: " + Math.round(statusInfo.humidity) + "g/m³";
+                });
+        
+            if(i===25){
+                clearInterval(statusInterval);
+            }
 
-        });
-    });
+        i++;
+        }
+    ,1000);
 };
 
 function SchlossClick() {
@@ -124,7 +127,7 @@ function SchlossClick() {
 }
 
 function LockClick() {
-    fetch("http://192.168.0.59:5000/action/lock").then(function (response) {
+    fetch("http://192.168.0.52:5000/action/lock").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -139,7 +142,7 @@ function LockClick() {
 };
 
 function UnlockClick() {
-    fetch("http://192.168.0.59:5000/action/unlock").then(function (response) {
+    fetch("http://192.168.0.52:5000/action/unlock").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -158,33 +161,25 @@ function AudioClick() {
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("audiopage").content.cloneNode(true));
 
-    fetch("http://192.168.0.59:5000/music")
+    fetch("http://192.168.0.52:5000/music")
         .then(response => response.json())
         .then(function (musicList) {
             console.log("musicList: ", musicList);
-            console.log("Titel 2. Lied: ", musicList[1].title);
+            musicList = musicList;
             var list = document.getElementsByTagName("UL")[0];
-            list.getElementsByTagName("LI")[0].innerHTML = musicList[0].title + " - " + musicList[0].artist;
-            list.getElementsByTagName("LI")[1].innerHTML = musicList[1].title + " - " + musicList[1].artist;
-            list.getElementsByTagName("LI")[2].innerHTML = musicList[2].title + " - " + musicList[2].artist;
-            // response.text()
-            //     .then(function (music) {
-            //         console.log(text);
-            //         var title1 = text.substr(104, 5);
-            //         var list = document.getElementsByTagName("UL")[0];
-            //         list.getElementsByTagName("LI")[0].innerHTML = title1;
-            //         document.getElementsByClassName("songs")[1].innerHTML = split1[2];
-            //         document.getElementsByClassName("songs")[2].innerHTML = split1[3];
-            //     });
+            list.getElementsByTagName("a")[0].innerHTML = musicList[0].title + " - " + musicList[0].artist;
+            list.getElementsByTagName("a")[1].innerHTML = musicList[1].title + " - " + musicList[1].artist;
+            list.getElementsByTagName("a")[2].innerHTML = musicList[2].title + " - " + musicList[2].artist;
+            list.getElementsByTagName("a")[3].innerHTML = musicList[3].title + " - " + musicList[3].artist;
         });
+    
+        function SongClick() {
+            console.log(AudioClick(musicList[0].path));
+        }
 };
 
-function SongClick() {
-    let 
-}
-
 function OpenClick() {
-    fetch("http://192.168.0.59:5000/window/open").then(function (response) {
+    fetch("http://192.168.0.52:5000/window/open").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -195,7 +190,7 @@ function OpenClick() {
 };
 
 function CloseClick() {
-    fetch("http://192.168.0.59:5000/window/close").then(function (response) {
+    fetch("http://192.168.0.52:5000/window/close").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');

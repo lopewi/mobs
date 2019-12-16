@@ -37,6 +37,13 @@ footer {
     text-align: center;
 }
 
+
+#random {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+
 #audio {
     grid-column: 2;
     grid-row: 1;
@@ -112,14 +119,14 @@ footer {
     grid-row: 2;
 }
 
-#music{
-    grid-column: 2/4;
-    grid-row: 1/2;
-}
-
 #audioplayer{
     grid-column: 3;
     grid-row: 2;
+}
+
+.scroll{
+    grid-column: 2 / 3;
+    grid-row: 1;
 }
 
 div.item, div.info, div.songs {
@@ -183,11 +190,16 @@ div#date{
     float: left;
 }
 
-.active a{color:#5DB0E6;text-decoration:none;}
+.active a{color:#5DB0E6}
 ul {
     color:#eeeedd;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     list-style-type: "♫";
     }
+
+li {
+    margin: 20px;
+}
 
 #playlist{
     color: white;
@@ -195,8 +207,8 @@ ul {
 
 .scroll {
     height: 150px;
+    width: 800px;
     overflow-y: scroll;
     overflow-x: hidden;
-    width: 100%;
     padding: 10px;
     }
