@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+    
+<!-- 1920 1080px window.setInterval-->
 
 <head>
     <meta charset="utf-8">
@@ -27,7 +29,7 @@
             </div>
 
             <div class="item" id="audio">
-                <img class="icon" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
+                <img class="icon" id="audioImg" src="https://img.icons8.com/ios/100/000000/google-play-music.png">
                 Audioplayer
             </div>
 
@@ -119,23 +121,24 @@
             Home
         </div>
         
-        <div class="item" id="fensterlinks">
-            <img class="icon" style="transform: rotate(-90deg);"
+        <div class="item" id="open">
+            <img class="icon" style="transform: rotate(-270deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster links
+            Fenster öffnen
         </div>
 
-        <div class="item" id="fensterrechts">
+        <div class="item" id="close">
             <img class="icon" style="transform: rotate(-90deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Fenster rechts
+            Fenster schließen
         </div>
 
+<!-- 
         <div class="item" id="allefenster">
             <img class="icon" style="transform: rotate(-90deg);"
             src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Alle Fenster
-        </div>
+        </div> -->
         
     </template>
 
@@ -146,16 +149,16 @@
             Home
         </div>
 
-        <div class="songs">
-            song1
-        </div>
+        <audio controls id="audioplayer">
+            <source src="http://www.archive.org/download/bolero_69/Bolero.mp3" type="audio/mp3" preload="auto">
+        </audio>
 
-        <div class="songs">
-            song2
-        </div>
-        
-        <div class="songs">
-            song3
+        <div class="scroll">
+        <ul id="playlist">
+            <li class="active"><a href="">text</a></li>
+            <li><a href="">text</a></li>
+            <li><a href="">text</a></li>
+        </ul>
         </div>
 
     </template>
