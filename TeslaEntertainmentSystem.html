@@ -21,7 +21,6 @@
     <main>
             <div class="item" id="home" style="display:none">
                 <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
-                Home
             </div>
 
             <div class="item" id="audio">
@@ -40,15 +39,22 @@
             </div>
 
             <div class="item" id="fenster">
-                <img class="icon" style="transform: rotate(-90deg);"
-                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+                <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
                 Fenster
+            </div>
+
+            <div class="item" id="maps">
+                <img class="icon" src="https://img.icons8.com/wired/100/000000/map-marker.png">
+                Maps
             </div>
 
     </main>
 
     <footer>
-        ♫♫♫ Now playing: ♫♫♫
+        <!-- ♫♫♫ Now playing: ♫♫♫ <br> -->
+        <audio controls id="audioplayer">
+            <source id="sourceId" src="music/Alaska.mp3" type="audio/mp3" preload="auto">
+        </audio>
     </footer>
 
     <template id="mainpage">
@@ -74,9 +80,13 @@
         </div>
 
         <div class="item" id="fenster">
-            <img class="icon" style="transform: rotate(-90deg);"
-            src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            <img class="icon" style="transform: rotate(-90deg);" src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Fenster
+        </div>
+
+        <div class="item" id="maps">
+            <img class="icon" src="https://img.icons8.com/wired/100/000000/map-marker.png">
+            Maps
         </div>
 
     </template>
@@ -145,9 +155,9 @@
             Home
         </div>
 
-        <audio controls id="audioplayer">
+<!--         <audio controls id="audioplayer">
             <source id="sourceId" src="music/Alaska.mp3" type="audio/mp3" preload="auto">
-        </audio>
+        </audio> -->
 
         <div class="scroll">
         <ul id="playlist">
@@ -158,11 +168,21 @@
         </ul>
         </div>
 
-        <div class="item" id="random">
-            <img class="icon" src="https://img.icons8.com/ios/100/000000/no-key.png">
-            Random test div
+        <div class="item1" id="forward">
+            <img class="icon" id="forwardImg" src="https://img.icons8.com/ios-filled/100/000000/forward.png">
+            Forward
         </div>
 
+    </template>
+
+    <template class="template" id="mapspage">
+
+        <div class="item" id="home">
+            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+            Home
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2633.4235945675146!2d9.65588964228536!3d48.69738407727957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbe38af117da25959!2sHochschule%20Esslingen!5e0!3m2!1sde!2sde!4v1576526270862!5m2!1sde!2sde" width="300%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    
     </template>
 
 </body>

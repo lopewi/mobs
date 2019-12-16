@@ -61,15 +61,24 @@ function handleMainClick(event) {
             CloseClick();
             break;
 
-        case "random":
+        case "forward":
             SongClick();
+            break;
+        
+        case "maps":
+            MapsClick();
             break;
     }
 }
 document.querySelector('main').addEventListener("click", handleMainClick);
 
+function MapsClick() {
+    let mainElement = document.querySelector('main');
+    mainElement.innerHTML = '';
+    mainElement.appendChild(document.getElementById("mapspage").content.cloneNode(true));
+}
+
 function HomeClick() {
-    clearInterval(StatusClick);
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("mainpage").content.cloneNode(true));
