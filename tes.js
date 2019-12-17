@@ -96,6 +96,8 @@ function FensterClick() {
     mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
 }
 
+var a;
+
 function StatusClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
@@ -113,11 +115,11 @@ function StatusClick() {
                 document.getElementsByClassName("info")[4].innerHTML = "Feuchtigkeit: " + Math.round(statusInfo.humidity) + "g/m³";
                 });
         
-            if(i===25){
+            if(a===25){
                 clearInterval(statusInterval);
             }
 
-        i++;
+        a++;
         }
     ,1000);
 };
