@@ -91,8 +91,6 @@ function FensterClick() {
     mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
 }
 
-var i = 0;
-
 function StatusClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
@@ -165,6 +163,8 @@ function UnlockClick() {
     });
 };
 
+var SongList = [];
+
 function AudioClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
@@ -175,17 +175,20 @@ function AudioClick() {
         .then(function (musicList) {
             console.log("musicList: ", musicList);
             musicList = musicList;
-            var list = document.getElementsByTagName("UL")[0];
-            list.getElementsByTagName("a")[0].innerHTML = musicList[0].title + " - " + musicList[0].artist;
-            list.getElementsByTagName("a")[1].innerHTML = musicList[1].title + " - " + musicList[1].artist;
-            list.getElementsByTagName("a")[2].innerHTML = musicList[2].title + " - " + musicList[2].artist;
-            list.getElementsByTagName("a")[3].innerHTML = musicList[3].title + " - " + musicList[3].artist;
+            for(i = 0; i<musicList.length; i++)
+            {
+                var newDiv = document.createElement("div").id = "song" + [i];
+                newDiv.className = "scroll";
+                document.getElementById("audiopage").appendChild(newDiv);
+                newDiv.getElementsByTagName("div")[i+1].innerHTML = musicList[i].title + " - " + musicList[i].artist;
+                window.SongList.push(musicList.path);
+            }
         });
-    
-        function SongClick() {
-            console.log(AudioClick(musicList[0].path));
-        }
 };
+
+/* function SongClick(data) {
+    document.getElementById("song")audioplayer.src = window.SongList[data];
+} */
 
 function OpenClick() {
     fetch("http://192.168.0.52:5000/window/open").then(function (response) {
