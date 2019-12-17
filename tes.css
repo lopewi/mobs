@@ -116,14 +116,9 @@ footer {
     grid-row: 2;
 }
 
-#forward{
+#shuffle{
     grid-column: 1;
     grid-row: 2;
-}
-
-.scroll{
-    grid-column: 2 / 3;
-    grid-row: 1;
 }
 
 div.item, div.info, div.songs {
@@ -145,7 +140,7 @@ div.info{
 }
 
 
-div.item:hover, div.info:hover, div.songs:hover {
+div.item:hover, div.info:hover, div.songs:hover div.item1:hover{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
@@ -188,7 +183,7 @@ div#date{
     float: left;
 }
 
-.active a{color:#5DB0E6}
+/* .active a{color:#5DB0E6}
 ul {
     color:#eeeedd;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -197,11 +192,11 @@ ul {
 
 li {
     margin: 20px;
-}
+} 
 
 #playlist{
     color: white;
-}
+} 
 
 .scroll {
     height: 150px;
@@ -209,4 +204,14 @@ li {
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 10px;
-    }
+    color: white;
+    } */
+
+.hitmusic {
+    height: 150px;
+    width: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+    color: white;
+}
