@@ -70,6 +70,10 @@ function handleMainClick(event) {
             ShuffleClick();
             break;
         
+        case "hits":
+            SongClick();
+            break;
+        
         case "maps":
             MapsClick();
             break;
@@ -115,7 +119,7 @@ function StatusClick() {
                 document.getElementsByClassName("info")[4].innerHTML = "Feuchtigkeit: " + Math.round(statusInfo.humidity) + "g/m³";
                 });
         
-            if(a===25){
+            if(a>7){
                 clearInterval(statusInterval);
             }
 
@@ -190,11 +194,12 @@ function AudioClick() {
                 window.SongNumber.push(i);
                 window.SongTitle.push(musicList[i].title);
                 window.SongArtist.push(musicList[i].artist);
-                var newDivs = document.createElement("div");
-                newDivs.id = "song"+i;
-                newDivs.className = "hitmusic";
-                newDivs.innerHTML = i + musicList[i].title + " - " + musicList[i].artist;
-                mainElement.appendChild(newDivs);
+                var newLi = document.createElement("LI");
+                newLi.id = "song"+i;
+                newLi.id = "hits";
+                newLi.className = "hitmusic";
+                newLi.innerHTML = musicList[i].title + " - " + musicList[i].artist;
+                document.getElementsByClassName("hitlist")[0].appendChild(newLi);
             }
         });
 };
@@ -208,8 +213,10 @@ function ShuffleClick() {
     document.getElementById("audioplayer").src = randomSong;
 }
 
-/* function SongClick() {
-    var songWahl = 
+/* function SongClick(SongNumber) {
+    console.log(SongListpath.indexOf());
+    var songWahl = window.SongListpath[SongNumber];
+    document.getElementById("audioplayer").src = songWahl;
 } */
 
 function OpenClick() {

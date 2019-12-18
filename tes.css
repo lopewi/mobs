@@ -22,9 +22,7 @@ main{
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto auto;
-    padding-right: 50px;
-    padding-left: 50px;
-    padding-bottom: 50px;
+    padding: 50px;
 }
 
 footer {
@@ -121,6 +119,11 @@ footer {
     grid-row: 2;
 }
 
+.scroll{
+    grid-column: 2;
+    grid-row: 1;
+}
+
 div.item, div.info, div.songs {
     background:rgba(177, 7, 7, 0.87);
     color: white;
@@ -183,35 +186,18 @@ div#date{
     float: left;
 }
 
-/* .active a{color:#5DB0E6}
-ul {
-    color:#eeeedd;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+.hitlist {
+    height: 30%;
+    width: 250%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 10px;
+    color: white;
     list-style-type: "♫";
-    }
-
-li {
-    margin: 20px;
-} 
-
-#playlist{
-    color: white;
-} 
-
-.scroll {
-    height: 150px;
-    width: 800px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 10px;
-    color: white;
-    } */
-
-.hitmusic {
-    height: 150px;
-    width: 800px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 10px;
-    color: white;
+    padding-left: 30px;
 }
+
+ul li {
+    background: #c75959;
+    margin: 5px;
+  }
