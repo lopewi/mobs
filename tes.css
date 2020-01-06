@@ -7,7 +7,7 @@ body {
     grid-template-areas: "header" "main" "footer";
     grid-template-columns: auto;
     grid-template-rows: 30% auto 10%;
-    height: 100vh;
+    height: 1080px;
     background-image: linear-gradient(to top, rgb(61, 59, 59) 0%, black 25%)
 }
 
@@ -69,24 +69,29 @@ footer {
     grid-row: 2;
 }
 
-#home{
+#home, #homeStatus{
     grid-column: 1;
     grid-row: 1;
 }
 
-#fensterlinks{
+#open{
     grid-column: 2;
     grid-row: 1;
 }
 
-#fensterrechts{
+#close{
     grid-column: 3;
     grid-row: 1;
 }
 
-#allefenster{
-    grid-column: 4;
-    grid-row: 1;
+#allopen{
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#allclose{
+    grid-column: 3;
+    grid-row: 2;
 }
 
 #speed{
@@ -119,10 +124,11 @@ footer {
     grid-row: 2;
 }
 
-.scroll{
+.hitlist{
     grid-column: 2;
     grid-row: 1;
 }
+
 
 div.item, div.info, div.songs {
     background:rgba(177, 7, 7, 0.87);
@@ -142,14 +148,13 @@ div.info{
     text-align: center;
 }
 
-
-div.item:hover, div.info:hover, div.songs:hover div.item1:hover{
+div.item:hover, div.info:hover, div.songs:hover div.item1:hover, div#home:hover, div#homeStatus:hover{
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
-div#home, div.item1 {
+div#home, div.item1, div#homeStatus {
     background: rgb(102, 101, 101);
     color: white;
     font-size: 0.7em;
@@ -160,10 +165,8 @@ div#home, div.item1 {
     border-style: solid;
     border-color: rgb(52, 54, 54);
     height: 100px;
-    width: 50%;
     text-align: right;
 }
-
 
 div#time{
     font-size: 3em;
@@ -182,22 +185,24 @@ div#date{
 }
 
 .icon{
-    -webkit-filter: invert(100%);
+    filter: invert(100%);
     float: left;
 }
 
 .hitlist {
-    height: 30%;
-    width: 250%;
+    height: 40%;
+    width: 200%;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 10px;
     color: white;
     list-style-type: "♫";
-    padding-left: 30px;
+    padding-left: 50px;
+    font-family: 'Cairo', sans-serif;
+    font-size: medium;
 }
 
-ul li {
+li {
     background: #c75959;
     margin: 5px;
   }

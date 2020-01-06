@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-<!-- 1920 1080px -->
-
 <head>
     <meta charset="utf-8">
     <title> Tesla Entertainment System </title>
     <link rel="stylesheet" href="tes.css">
+    <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
     <script src="tes.js" async></script>
 </head>
 
@@ -52,8 +51,8 @@
     </main>
 
     <footer>
-        <!-- ♫♫♫ Now playing: ♫♫♫ <br> -->
-        <audio controls id="audioplayer" src="music/Alaska.mp3" type="audio/mp3" preload="auto">
+        
+        <audio controls id="audioplayer" src="music/Wrong.mp3" type="audio/mp3" preload="auto">
         </audio>
 
     </footer>
@@ -92,10 +91,10 @@
 
     </template>
 
-    <template id="statustemplate">
+    <template id="statuspage">
 
-        <div class="item" id="home">
-            <img class="icon" src="https://img.icons8.com/ios-filled/100/000000/home.png">
+        <div class="item" id="homeStatus">
+            <img class="icon" id="homestatusImg" src="https://img.icons8.com/ios-filled/100/000000/home.png">
             Home
         </div>
 
@@ -129,23 +128,28 @@
         </div>
 
         <div class="item" id="open">
-            <img class="icon" style="transform: rotate(-270deg);"
+            <img class="icon" id="openImg" style="transform: rotate(-270deg);"
                 src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Fenster öffnen
         </div>
 
         <div class="item" id="close">
-            <img class="icon" style="transform: rotate(-90deg);"
+            <img class="icon" id="closeImg" style="transform: rotate(-90deg);"
                 src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
             Fenster schließen
         </div>
 
-        <!-- 
-        <div class="item" id="allefenster">
-            <img class="icon" style="transform: rotate(-90deg);"
-            src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
-            Alle Fenster
-        </div> -->
+        <div class="item" id="allopen">
+            <img class="icon" id="allopenImg" style="transform: rotate(-270deg);"
+                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Alle Fenster öffnen
+        </div>
+
+        <div class="item" id="allclose">
+            <img class="icon" id="allcloseImg" style="transform: rotate(-90deg);"
+                src="https://img.icons8.com/carbon-copy/100/000000/close-pane.png">
+            Alle Fenster schließen
+        </div>
 
     </template>
 
@@ -162,7 +166,6 @@
         </div>
 
         <ul class="hitlist">
-
         </ul>
 
     </template>
