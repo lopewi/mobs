@@ -23,6 +23,7 @@ main{
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-rows: auto auto;
     padding: 50px;
+    align-items: center;
 }
 
 footer {
@@ -48,6 +49,7 @@ div#date{
 
 #teslalogo{
     float:left;
+    height: 200px;
 }
 
 div.item, div.info, div.songs {
@@ -64,7 +66,7 @@ div.item, div.info, div.songs {
     text-align: right;
 }
 
-div#home, div.item1, div#homeStatus {
+div#home, div#homeStatus, div#shuffle, div#lock, div#unlock {
     background: rgb(102, 101, 101);
     color: white;
     font-size: 0.7em;
@@ -105,9 +107,8 @@ li {
     margin: 5px;
   }
 
-div.item:hover, div.info:hover, div.songs:hover div.item1:hover, div#home:hover, div#homeStatus:hover{
+div.item:hover, div#lock, div#unlock {
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
-    -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 
@@ -202,6 +203,13 @@ div.item:hover, div.info:hover, div.songs:hover div.item1:hover, div#home:hover,
 }
 
 .hitlist{
-    grid-column: 2;
+    grid-column: 2 / 4;
     grid-row: 1;
+}
+
+audio#audioplayer{
+    align-self: center;
+    justify-self: left;
+    grid-column: 3;
+    grid-row: 2;
 }

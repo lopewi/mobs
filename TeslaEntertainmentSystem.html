@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
+    <meta name="author" content="Louisa Peters">
+    <meta name="description" content="Projekt des Master Studiengangs Smart Factory im Fach Mobile Systeme zum Thema Erstellung eines Tesla Entertainment Systems">
     <title> Tesla Entertainment System </title>
     <link rel="stylesheet" href="tes.css">
     <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
@@ -12,7 +14,7 @@
 <body onload="timedate()">
 
     <header>
-        <img id="teslalogo" src="teslalogo.jpg" height=200px>
+        <img id="teslalogo" src="teslalogo.jpg">
         <div id="time"></div>
         <div id="date"></div>
     </header>
@@ -51,9 +53,6 @@
     </main>
 
     <footer>
-        
-        <audio controls id="audioplayer" src="music/Wrong.mp3" type="audio/mp3" preload="auto">
-        </audio>
 
     </footer>
 
@@ -160,13 +159,16 @@
             Home
         </div>
 
-        <div class="item1" id="shuffle">
+        <div class="item" id="shuffle">
             <img class="icon" id="shuffleImg" src="https://img.icons8.com/ios-filled/100/000000/forward.png">
-            shuffle
+            Shuffle
         </div>
 
         <ul class="hitlist">
         </ul>
+
+        <audio controls id="audioplayer" src="music/Wrong.mp3" type="audio/mp3" preload="auto">
+        </audio>
 
     </template>
 

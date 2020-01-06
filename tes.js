@@ -146,14 +146,14 @@ function SchlossClick() {
     newDiv1.innerHTML = "Abschließen";
     newDiv1.id = "lock";
     newDiv1.style.textAlign = "center";
-    newDiv1.className = "item1";
+    newDiv1.className = "item";
     document.getElementsByTagName("main")[0].appendChild(newDiv1);
 
     var newDiv2 = document.createElement("div");
     newDiv2.innerHTML = "Aufschließen";
     newDiv2.style.textAlign = "center";
     newDiv2.id = "unlock";
-    newDiv2.className = "item1";
+    newDiv2.className = "item";
     document.getElementsByTagName("main")[0].appendChild(newDiv2);
 }
 
