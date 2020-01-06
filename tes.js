@@ -20,7 +20,6 @@ function timedate() {
 }
 
 function handleMainClick(event) {
-
     console.log("Target:", event.target.id);
 
     switch (event.target.id) {
@@ -81,11 +80,7 @@ function handleMainClick(event) {
         case "shuffleImg":
             ShuffleClick();
             break;
-        
-/*         case "hits":
-            SongClick();
-            break; */
-        
+
         case "maps":
         case "mapsImg":
             MapsClick();
@@ -133,7 +128,7 @@ function StatusClick() {
     mainElement.appendChild(document.getElementById("statuspage").content.cloneNode(true));
     window.interval = setInterval(
         function StatusInfo() {
-        fetch("http://192.168.0.241:5000/status")
+        fetch("http://192.168.0.59:5000/status")
         .then(response => response.json())
         .then(function (statusInfo){
             document.getElementsByClassName("info")[0].innerHTML = "Geschwindigkeit: " + statusInfo.speed + "kmh";
@@ -145,7 +140,6 @@ function StatusClick() {
         }
     ,1000);
 };
-  
 
 function SchlossClick() {
     var newDiv1 = document.createElement("div");
@@ -164,7 +158,7 @@ function SchlossClick() {
 }
 
 function LockClick() {
-    fetch("http://192.168.0.241:5000/action/lock").then(function (response) {
+    fetch("http://192.168.0.59:5000/action/lock").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -179,7 +173,7 @@ function LockClick() {
 };
 
 function UnlockClick() {
-    fetch("http://192.168.0.241:5000/action/unlock").then(function (response) {
+    fetch("http://192.168.0.59:5000/action/unlock").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -203,7 +197,7 @@ function AudioClick() {
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("audiopage").content.cloneNode(true));
 
-    fetch("http://192.168.0.241:5000/music")
+    fetch("http://192.168.0.59:5000/music")
         .then(response => response.json())
         .then(function (musicList) {
             console.log("musicList: ", musicList);
@@ -225,10 +219,7 @@ function AudioClick() {
 
 /* function SongClick(data) {
     document.getElementById("song")audioplayer.src = window.SongList[data];
-} */
-
-/* function SongClick(SongNumber) {
-    console.log(SongListpath.indexOf());
+    function SongClick(SongNumber) {  console.log(SongListpath.indexOf()); 
     var songWahl = window.SongListpath[SongNumber];
     document.getElementById("audioplayer").src = songWahl;
 } */
@@ -239,7 +230,7 @@ function ShuffleClick() {
 }
 
 function OpenClick() {
-    fetch("http://192.168.0.241:5000/window/open").then(function (response) {
+    fetch("http://192.168.0.59:5000/window/open").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -250,7 +241,7 @@ function OpenClick() {
 };
 
 function CloseClick() {
-    fetch("http://192.168.0.241:5000/window/close").then(function (response) {
+    fetch("http://192.168.0.59:5000/window/close").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -261,7 +252,7 @@ function CloseClick() {
 };
 
 function AllOpenClick() {
-    fetch("http://192.168.0.241:5000/window/allopen").then(function (response) {
+    fetch("http://192.168.0.59:5000/window/allopen").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
@@ -272,7 +263,7 @@ function AllOpenClick() {
 };
 
 function AllCloseClick() {
-    fetch("http://192.168.0.241:5000/window/allclose").then(function (response) {
+    fetch("http://192.168.0.59:5000/window/allclose").then(function (response) {
         console.log("Response: ", response);
         response.text().then(function (text) {
             let mainElement = document.querySelector('main');
