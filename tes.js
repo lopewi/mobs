@@ -16,7 +16,7 @@ function timedate() {
     if (min < 10) { min = "0" + min; }
     if (sec < 10) { sec = "0" + sec; }
     document.getElementById("time").innerHTML = hour + ":" + min + ":" + sec;
-    var tdreload = setTimeout(timedate, 1000);
+    setTimeout(timedate, 1000);
 }
 
 function handleMainClick(event) {
@@ -196,8 +196,9 @@ function AudioClick() {
     let mainElement = document.querySelector('main');
     mainElement.innerHTML = '';
     mainElement.appendChild(document.getElementById("audiopage").content.cloneNode(true));
+    document.getElementById("audioplayer").play();
 
-    fetch("http://192.168.0.59:5000/music")
+    fetch("http://192.168.0.241:5000/music")
         .then(response => response.json())
         .then(function (musicList) {
             console.log("musicList: ", musicList);
@@ -223,12 +224,22 @@ function SongClick() {
     console.log("Title: " + SongTitle[songInfo.id] + " Artist: " + SongArtist[songInfo.id] + " Path: " + SongListpath[songInfo.id]);
     var songPath = SongListpath[songInfo.id];
     document.getElementById("audioplayer").src = songPath;
-}
+    document.getElementById("audioplayer").play();
+};
 
 function ShuffleClick() {
     var randomSong = window.SongListpath[Math.floor(Math.random()*window.SongListpath.length)];
+    var saveSong = [];
+    saveSong.push(randomSong);
+    if (saveSong[0]=saveSong[1]) {
+        document.getElementById("audioplayer").src = randomSong+1;
+        document.getElementById("audioplayer").play();
+    }
+    else {
     document.getElementById("audioplayer").src = randomSong;
-}
+    document.getElementById("audioplayer").play();
+    }
+};
 
 function OpenClick() {
     fetch("http://192.168.0.59:5000/window/open").then(function (response) {
