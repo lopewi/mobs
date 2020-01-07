@@ -68,16 +68,7 @@ div.item, div.info, div.songs {
 
 div#home, div#homeStatus, div#shuffle, div#lock, div#unlock {
     background: rgb(102, 101, 101);
-    color: white;
-    font-size: 0.7em;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 20px;
-    margin: 20px;
-    border-width: 2px;
-    border-style: solid;
     border-color: rgb(52, 54, 54);
-    height: 100px;
-    text-align: right;
 }
 
 .icon{
@@ -107,7 +98,7 @@ li {
     margin: 5px;
   }
 
-div.item:hover, div#lock, div#unlock {
+div.item:hover, div#lock:hover, div#unlock:hover {
     box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
     transform: scale(1.1);
 }

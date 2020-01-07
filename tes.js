@@ -19,7 +19,7 @@ function timedate() {
     setTimeout(timedate, 1000);
 }
 
-function handleMainClick(event) {
+function mainClick(event) {
     console.log("Target:", event.target.id);
 
     switch (event.target.id) {
@@ -92,7 +92,7 @@ function handleMainClick(event) {
             break;
     }
 }
-document.querySelector('main').addEventListener("click", handleMainClick);
+document.querySelector('main').addEventListener("click", mainClick);
 
 function MapsClick() {
     let mainElement = document.querySelector('main');
@@ -107,13 +107,7 @@ function HomeClick() {
     document.getElementById("home").style.display = "none";
 }
 
-function HomeStatusClick() {
-    clearInterval(window.interval);
-    let mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    mainElement.appendChild(document.getElementById("mainpage").content.cloneNode(true));
-    document.getElementById("home").style.display = "none";
-}
+// Fenster Template anfügen und öffnen und schließen der Fenster einzeln/gemeinsam erlauben
 
 function FensterClick() {
     let mainElement = document.querySelector('main');
@@ -121,25 +115,51 @@ function FensterClick() {
     mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
 }
 
-var interval;
-function StatusClick() {
-    let mainElement = document.querySelector('main');
-    mainElement.innerHTML = '';
-    mainElement.appendChild(document.getElementById("statuspage").content.cloneNode(true));
-    window.interval = setInterval(
-        function StatusInfo() {
-        fetch("http://192.168.0.59:5000/status")
-        .then(response => response.json())
-        .then(function (statusInfo){
-            document.getElementsByClassName("info")[0].innerHTML = "Geschwindigkeit: " + statusInfo.speed + "kmh";
-            document.getElementsByClassName("info")[1].innerHTML = "Verbrauch: "+ statusInfo.consumption + "l";
-            document.getElementsByClassName("info")[2].innerHTML = "Luftdruck: " + Math.round(statusInfo.pressure) + "Pa";
-            document.getElementsByClassName("info")[3].innerHTML = "Temperatur: " + Math.round(statusInfo.temp) + "°C";
-            document.getElementsByClassName("info")[4].innerHTML = "Feuchtigkeit: " + Math.round(statusInfo.humidity) + "g/m³";
-            });
-        }
-    ,1000);
+function OpenClick() {
+    fetch("http://192.168.0.59:5000/window/open").then(function (response) {
+        console.log("Response: ", response);
+        response.text().then(function (text) {
+            let mainElement = document.querySelector('main');
+            mainElement.innerHTML = '';
+            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
+        });
+    });
 };
+
+function CloseClick() {
+    fetch("http://192.168.0.59:5000/window/close").then(function (response) {
+        console.log("Response: ", response);
+        response.text().then(function (text) {
+            let mainElement = document.querySelector('main');
+            mainElement.innerHTML = '';
+            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
+        });
+    });
+};
+
+function AllOpenClick() {
+    fetch("http://192.168.0.59:5000/window/allopen").then(function (response) {
+        console.log("Response: ", response);
+        response.text().then(function (text) {
+            let mainElement = document.querySelector('main');
+            mainElement.innerHTML = '';
+            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
+        });
+    });
+};
+
+function AllCloseClick() {
+    fetch("http://192.168.0.59:5000/window/allclose").then(function (response) {
+        console.log("Response: ", response);
+        response.text().then(function (text) {
+            let mainElement = document.querySelector('main');
+            mainElement.innerHTML = '';
+            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
+        });
+    });
+};
+
+//Türfunktionen anzeigen und öffnen oder schließen der Tür ermöglichen
 
 function SchlossClick() {
     var newDiv1 = document.createElement("div");
@@ -187,6 +207,39 @@ function UnlockClick() {
     });
 };
 
+//Sekündliche Abfrage von Statusinformationen des Autos
+//Homebutton beendet das Interval
+
+function HomeStatusClick() {
+    clearInterval(window.interval);
+    let mainElement = document.querySelector('main');
+    mainElement.innerHTML = '';
+    mainElement.appendChild(document.getElementById("mainpage").content.cloneNode(true));
+    document.getElementById("home").style.display = "none";
+}
+
+var interval;
+function StatusClick() {
+    let mainElement = document.querySelector('main');
+    mainElement.innerHTML = '';
+    mainElement.appendChild(document.getElementById("statuspage").content.cloneNode(true));
+    window.interval = setInterval(
+        function StatusInfo() {
+        fetch("http://192.168.0.59:5000/status")
+        .then(response => response.json())
+        .then(function (statusInfo){
+            document.getElementsByClassName("info")[0].innerHTML = "Geschwindigkeit: " + statusInfo.speed + "kmh";
+            document.getElementsByClassName("info")[1].innerHTML = "Verbrauch: "+ statusInfo.consumption + "l";
+            document.getElementsByClassName("info")[2].innerHTML = "Luftdruck: " + Math.round(statusInfo.pressure) + "Pa";
+            document.getElementsByClassName("info")[3].innerHTML = "Temperatur: " + Math.round(statusInfo.temp) + "°C";
+            document.getElementsByClassName("info")[4].innerHTML = "Feuchtigkeit: " + Math.round(statusInfo.humidity) + "g/m³";
+            });
+        }
+    ,1000);
+};
+
+//Audioplayer mit Songauswahl und Shufflefunktion
+
 var SongListpath = [];
 var SongNumber = [];
 var SongTitle = [];
@@ -198,7 +251,7 @@ function AudioClick() {
     mainElement.appendChild(document.getElementById("audiopage").content.cloneNode(true));
     document.getElementById("audioplayer").play();
 
-    fetch("http://192.168.0.241:5000/music")
+    fetch("http://192.168.0.59:5000/music")
         .then(response => response.json())
         .then(function (musicList) {
             console.log("musicList: ", musicList);
@@ -239,48 +292,4 @@ function ShuffleClick() {
     document.getElementById("audioplayer").src = randomSong;
     document.getElementById("audioplayer").play();
     }
-};
-
-function OpenClick() {
-    fetch("http://192.168.0.59:5000/window/open").then(function (response) {
-        console.log("Response: ", response);
-        response.text().then(function (text) {
-            let mainElement = document.querySelector('main');
-            mainElement.innerHTML = '';
-            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
-        });
-    });
-};
-
-function CloseClick() {
-    fetch("http://192.168.0.59:5000/window/close").then(function (response) {
-        console.log("Response: ", response);
-        response.text().then(function (text) {
-            let mainElement = document.querySelector('main');
-            mainElement.innerHTML = '';
-            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
-        });
-    });
-};
-
-function AllOpenClick() {
-    fetch("http://192.168.0.59:5000/window/allopen").then(function (response) {
-        console.log("Response: ", response);
-        response.text().then(function (text) {
-            let mainElement = document.querySelector('main');
-            mainElement.innerHTML = '';
-            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
-        });
-    });
-};
-
-function AllCloseClick() {
-    fetch("http://192.168.0.59:5000/window/allclose").then(function (response) {
-        console.log("Response: ", response);
-        response.text().then(function (text) {
-            let mainElement = document.querySelector('main');
-            mainElement.innerHTML = '';
-            mainElement.appendChild(document.getElementById("fensterpage").content.cloneNode(true));
-        });
-    });
 };
