@@ -16,7 +16,7 @@ function timedate() {
     if (min < 10) { min = "0" + min; }
     if (sec < 10) { sec = "0" + sec; }
     document.getElementById("time").innerHTML = hour + ":" + min + ":" + sec;
-    setInterval(timedate, 1000);
+    var tdreload = setTimeout(timedate, 1000);
 }
 
 function handleMainClick(event) {
@@ -208,21 +208,22 @@ function AudioClick() {
                 window.SongTitle.push(musicList[i].title);
                 window.SongArtist.push(musicList[i].artist);
                 var newLi = document.createElement("LI");
-                newLi.id = "song"+i;
-                newLi.id = "hits";
+                newLi.id = i;
                 newLi.className = "hitmusic";
                 newLi.innerHTML = musicList[i].title + " - " + musicList[i].artist;
                 document.getElementsByClassName("hitlist")[0].appendChild(newLi);
+                document.getElementById(i).addEventListener("click", SongClick)
             }
         });
 };
 
-/* function SongClick(data) {
-    document.getElementById("song")audioplayer.src = window.SongList[data];
-    function SongClick(SongNumber) {  console.log(SongListpath.indexOf()); 
-    var songWahl = window.SongListpath[SongNumber];
-    document.getElementById("audioplayer").src = songWahl;
-} */
+function SongClick() {
+    var songInfo = document.getElementById(event.target.id);
+    console.log (songInfo);
+    console.log("Title: " + SongTitle[songInfo.id] + " Artist: " + SongArtist[songInfo.id] + " Path: " + SongListpath[songInfo.id]);
+    var songPath = SongListpath[songInfo.id];
+    document.getElementById("audioplayer").src = songPath;
+}
 
 function ShuffleClick() {
     var randomSong = window.SongListpath[Math.floor(Math.random()*window.SongListpath.length)];

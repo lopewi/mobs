@@ -91,7 +91,7 @@ div.info{
 
 .hitlist {
     height: 40%;
-    width: 200%;
+    width: 600px;
     overflow-y: scroll;
     overflow-x: hidden;
     padding: 10px;
@@ -112,8 +112,13 @@ div.item:hover, div#lock, div#unlock {
     transform: scale(1.1);
 }
 
-  #audio {
+#audio {
     grid-column: 2;
+    grid-row: 1;
+}
+
+#home {
+    grid-column: 1;
     grid-row: 1;
 }
 
@@ -209,7 +214,7 @@ div.item:hover, div#lock, div#unlock {
 
 audio#audioplayer{
     align-self: center;
-    justify-self: left;
-    grid-column: 3;
+    justify-self: right;
+    grid-column: 2;
     grid-row: 2;
 }
